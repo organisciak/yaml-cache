@@ -1,0 +1,28 @@
+# .gitignore
+
+# Python files
+__pycache__/
+*.pyc
+
+# Distribution / packaging
+.Python
+env/
+build/
+dist/
+sdist/
+var/
+*.egg-info/
+*.egg
+MANIFEST
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Linux
+*~
