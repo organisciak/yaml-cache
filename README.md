@@ -1,22 +1,22 @@
-## yamlcache
+## yamlsync
 
-Yaml Cache is a *very* lightweight YAML-based cache for when you want to preserve the state of something on disk in a human readable way.
+Yaml Sync is a *very* lightweight YAML-based cache for when you want to preserve the state of something on disk in a human readable way.
 
 ## Installation
 
-To install Yaml Cache, simply run:
+To install Yaml Sync, simply run:
 
 ```bash
-pip install yaml-cache
+pip install yaml-sync
 ```
 
 
 ## Example usage
 
-Here's a quick example of how to use Yaml Cache:
+Here's a quick example of how to use Yaml Sync:
 
 ```
-from yaml_cache import YamlCache
+from yaml_sync import YamlCache
 
 # Create a cache that reads and writes to the specified file
 cache = YamlCache('cache.yaml', mode='rw')
@@ -44,7 +44,7 @@ list_example:
   2: 3
 ```
 
-You can pass `number_lists=True` at init to save any lists as a numbered dictionary. Since the goal of Yaml Cache is a human-readable file, the numbering may be desired in some cases.
+You can pass `number_lists=True` at init to save any lists as a numbered dictionary. Since the goal of Yaml Sync is a human-readable file, the numbering may be desired in some cases.
 
 ## License
 This project is licensed under the [MIT License](https://opensource.org/license/mit/).

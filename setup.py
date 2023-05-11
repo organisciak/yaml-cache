@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='yaml_cache',
-    version='0.1.0',
-    description='A simple YAML-based cache library for Python',
+    name='yaml-sync',
+    version='0.1.1',
+    description='A simple YAML-based cache for Python',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     author='Peter Organisciak',
     author_email='organisciak@gmail.com',
-    url='https://github.com/organisciak/yaml-cache',
+    url='https://github.com/organisciak/yaml-cachesync',
     packages=find_packages(),
     install_requires=[
         'PyYAML>=5.1',

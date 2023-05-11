@@ -1,6 +1,6 @@
 import os
 import unittest
-from yaml_cache.yaml_cache import YamlCache
+from yaml_sych.cache import YamlCache
 
 class TestYamlCache(unittest.TestCase):
     def setUp(self):
