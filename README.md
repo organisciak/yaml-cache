@@ -54,5 +54,21 @@ assert 'empty_key' in cache
 # AssertionError
 ```
 
+Finally, you can specify a preferred order to the keys, to control what is shown first in the yaml.
+
+```python
+cache = YamlCache('cache.yaml', order=['b', 'a'])
+
+cache['a'] = 'hello'
+cache['b'] = 'world'
+with open('cache.yaml') as f:
+    print(f.read())
+```
+
+```bash
+b: world
+a: hello
+```
+
 ## License
 This project is licensed under the [MIT License](https://opensource.org/license/mit/).

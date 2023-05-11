@@ -12,13 +12,16 @@ class YamlCache:
                            If None, this is a basic in-memory cache.
     :param mode: File access mode. 'rw' for read-write (default), 'w' to erase
                  existing cache, 'r' for read-only.
+    :param number_lists: Option to save lists as numbered dicts.
+    :param order: List of keys to prioritize at the top in the yaml.
     """
 
-    def __init__(self, cache_location=None, mode='rw', number_lists=False):
+    def __init__(self, cache_location=None, mode='rw', number_lists=False, order=None):
         self.cache_location = cache_location
         self.mode = mode
         self.number_lists = number_lists # True to save lists as numbered lists
         self.cache = {}
+        self.order = order if order else []
 
         if self.cache_location is not None:
             if os.path.exists(self.cache_location) and mode != 'w':
@@ -76,13 +79,23 @@ class YamlCache:
             self.cache = yaml.safe_load(f)
 
     def keys(self):
+        self._order_cache()
         return self.cache.keys()
     
     def values(self):
+        self._order_cache()
         return self.cache.values()
     
     def items(self):
+        self._order_cache()
         return self.cache.items()
+
+    def _order_cache(self):
+        ''' Reorder the in-memory dict'''
+        if self.order:
+            ordered_cache = {key: self.cache[key] for key in self.order if key in self.cache}
+            remaining_cache = {key: self.cache[key] for key in self.cache if key not in self.order}
+            self.cache = {**ordered_cache, **remaining_cache}
 
     def write(self, cache_location="default"):
         """
@@ -99,5 +112,6 @@ class YamlCache:
                 raise ValueError("Cache location not specified")
             cache_location = self.cache_location
 
+        self._order_cache()
         with open(cache_location, 'w') as f:
-            yaml.safe_dump(self.cache, f)
+            yaml.safe_dump(self.cache, f, sort_keys=False)
