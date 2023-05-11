@@ -46,5 +46,13 @@ list_example:
 
 You can pass `number_lists=True` at init to save any lists as a numbered dictionary. Since the goal of Yaml Sync is a human-readable file, the numbering may be desired in some cases.
 
+If a value is None, that key is not returned for `key in cache`. e.g.
+
+```python
+cache['empty_key'] = None
+assert 'empty_key' in cache
+# AssertionError
+```
+
 ## License
 This project is licensed under the [MIT License](https://opensource.org/license/mit/).

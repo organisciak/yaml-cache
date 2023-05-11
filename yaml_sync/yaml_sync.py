@@ -58,7 +58,7 @@ class YamlCache:
         :param key: The key to check for.
         :return: True if the key is in the cache, False otherwise.
         """
-        return key in self.cache
+        return (key in self.cache) and (self.cache[key] is not None)
 
     def load(self, cache_location="default"):
         """
@@ -74,6 +74,15 @@ class YamlCache:
 
         with open(cache_location, 'r') as f:
             self.cache = yaml.safe_load(f)
+
+    def keys(self):
+        return self.cache.keys()
+    
+    def values(self):
+        return self.cache.values()
+    
+    def items(self):
+        return self.cache.items()
 
     def write(self, cache_location="default"):
         """

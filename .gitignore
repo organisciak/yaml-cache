@@ -26,3 +26,7 @@ MANIFEST
 
 # Linux
 *~
+
+# Dev
+dev.ipynb
+cache.yaml
