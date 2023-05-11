@@ -1,6 +1,6 @@
 import os
 import unittest
-from yaml_sych.cache import YamlCache
+from yaml_sync import YamlCache
 
 class TestYamlCache(unittest.TestCase):
     def setUp(self):
@@ -19,6 +19,9 @@ class TestYamlCache(unittest.TestCase):
         self.cache['key'] = 'value'
         self.assertTrue('key' in self.cache)
         self.assertFalse('non_existent_key' in self.cache)
+
+        self.cache['key2'] = None
+        self.assertFalse('key2' in self.cache)
 
     def test_list_conversion(self):
         example_list = [1, 2, 3]
